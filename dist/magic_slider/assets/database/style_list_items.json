@@ -1,0 +1,74 @@
+[
+    {
+        "title": "Slider Image Magic",
+        "content": {
+            "p1": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.",
+            "p2": "Lorem ipsum dolor sit amet consectetur."
+        },
+        "img": "../images/pic-1.jpg"
+    },
+    {
+        "title": "Slider Image Magic",
+        "content": {
+            "p1": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.",
+            "p2": "Lorem ipsum dolor sit amet consectetur."
+        },
+        "img": "../images/pic-2.jpg"
+    },
+    {
+        "title": "Slider Image Magic",
+        "content": {
+            "p1": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.",
+            "p2": "Lorem ipsum dolor sit amet consectetur."
+        },
+        "img": "../images/pic-3.jpg"
+    },
+    {
+        "title": "Slider Image Magic",
+        "content": {
+            "p1": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.",
+            "p2": "Lorem ipsum dolor sit amet consectetur."
+        },
+        "img": "../images/pic-4.jpg"
+    },
+    {
+        "title": "Slider Image Magic",
+        "content": {
+            "p1": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.",
+            "p2": "Lorem ipsum dolor sit amet consectetur."
+        },
+        "img": "../images/pic-5.jpg"
+    },
+    {
+        "title": "Slider Image Magic",
+        "content": {
+            "p1": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.",
+            "p2": "Lorem ipsum dolor sit amet consectetur."
+        },
+        "img": "../images/pic-6.jpg"
+    },
+    {
+        "title": "Slider Image Magic",
+        "content": {
+            "p1": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.",
+            "p2": "Lorem ipsum dolor sit amet consectetur."
+        },
+        "img": "../images/pic-7.jpg"
+    },
+    {
+        "title": "Slider Image Magic",
+        "content": {
+            "p1": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.",
+            "p2": "Lorem ipsum dolor sit amet consectetur."
+        },
+        "img": "../images/pic-8.jpg"
+    },
+    {
+        "title": "Slider Image Magic",
+        "content": {
+            "p1": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.",
+            "p2": "Lorem ipsum dolor sit amet consectetur."
+        },
+        "img": "../images/pic-9.jpg"
+    }
+]

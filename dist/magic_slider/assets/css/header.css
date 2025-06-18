@@ -1,0 +1,41 @@
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9;
+    width: 100%;
+    padding: 15px 0;
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.header-wrap {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    z-index: 10;
+}
+
+.header-wrap .logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+}
+
+.header-wrap .logo-icon {
+    display: inline-block;
+    width: 60px;
+    height: 60px;
+}
+
+.header-wrap .logo-text {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: 0.1rem;
+}
+
+.header-wrap .menu {
+    cursor: pointer;
+}

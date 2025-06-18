@@ -1,0 +1,22 @@
+{
+    "home": {
+        "url": "#",
+        "zh": "首頁",
+        "en": "Home"
+    },
+    "about": {
+        "url": "#",
+        "zh": "關於我們",
+        "en": "About"
+    },
+    "product": {
+        "url": "product.html",
+        "zh": "商品目錄",
+        "en": "Product"
+    },
+    "cart": {
+        "url": "cart.html",
+        "zh": "購物車",
+        "en": "Cart"
+    }
+}

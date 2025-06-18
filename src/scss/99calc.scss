@@ -1,0 +1,396 @@
+// color
+$bg-primary: #272822;
+$bg-secondary: #3e3d32;
+$text-primary: #f8f8f2;
+$text-secondary: #75715e;
+$accent-color: #5dc4ea;
+$border-color: #49483e;
+
+$font: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+$font-size: (
+    "base": 16px,
+    "note": 0.85rem,
+    "md": 1rem,
+    "subtitle": 1.5rem,
+    "title": 2rem,
+);
+
+$font-weight: (
+    "ex-light": 300,
+    "light": 400,
+    "std": 500,
+    "semi-bold": 600,
+    "bold": 700,
+);
+
+$space-unit: 8px;
+$space: (
+    "xs": calc(#{$space-unit} * 0.5),
+    "sm": calc(#{$space-unit} * 1),
+    "md": calc(#{$space-unit} * 2),
+    "lg": calc(#{$space-unit} * 3),
+    "xl": calc(#{$space-unit} * 4),
+);
+
+$radius: (
+    "sm": 4px,
+    "md": 8px,
+    "lg": 16px,
+    "pill": 9999px,
+    "circle": 50%,
+);
+
+$shadow: (
+    "sm": 0 1px 3px 0
+        rgba(
+            $color: $text-primary,
+            $alpha: 0.12,
+        ),
+    "md": 0 4px 6px
+        rgba(
+            $color: $text-primary,
+            $alpha: 0.1,
+        ),
+    "lg": 0 10px 15px
+        rgba(
+            $color: $text-primary,
+            $alpha: 0.1,
+        ),
+);
+
+$transition: (
+    "fast": 0.15s ease-in-out,
+    "normal": 0.3s ease-in-out,
+    "slow": 0.5s ease-in-out,
+);
+
+$history-w-close: 42px;
+$history-w-open: 200px;
+$table-height: 380px;
+
+html,
+body {
+    background-color: $bg-primary;
+    font-family: $font;
+    font-size: map-get($font-size, base);
+}
+
+#particles-js {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 1;
+}
+
+.header {
+    margin-bottom: map-get($space, xl);
+    height: 80px;
+    border-bottom: 1px solid $text-primary;
+    position: relative;
+    z-index: 2;
+
+    &-wrap {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+
+        .title {
+            font-size: map-get($font-size, title);
+            font-weight: map-get($font-weight, bold);
+            color: $text-primary;
+            letter-spacing: 0.05rem;
+        }
+    }
+}
+
+.main {
+    position: relative;
+    z-index: 2;
+
+    .title {
+        margin-bottom: map-get($space, md);
+        font-size: map-get($font-size, subtitle);
+        font-weight: map-get($font-weight, semi-bold);
+        color: $text-primary;
+    }
+
+    .num-input {
+        margin-bottom: map-get($space, lg);
+        padding-bottom: map-get($space, lg);
+        border-bottom: 3px solid $border-color;
+        color: $text-primary;
+
+        &-wrap {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            &-el {
+                display: flex;
+                align-items: center;
+                gap: map-get($space, lg);
+
+                .inputs {
+                    display: flex;
+                    align-items: center;
+                    gap: map-get($space, md);
+
+                    & > div {
+                        // display: flex;
+                        // align-items: center;
+                        // gap: map-get($space, sm);
+                        transition: map-get($transition, normal);
+
+                        &:hover {
+                            transform: translateY(-2px);
+
+                            label {
+                                color: $accent-color;
+                            }
+
+                            input {
+                                outline: 3px solid $accent-color;
+                            }
+                        }
+
+                        label {
+                            margin-right: map-get($space, lg);
+                            font-size: map-get($font-size, md);
+                            cursor: pointer;
+                            transition: map-get($transition, fast);
+                        }
+
+                        input {
+                            padding: 5px 12px;
+                            outline: 0;
+                            border: 0;
+                            border-radius: map-get($radius, sm);
+                            font-size: map-get($font-size, md);
+                            transition: map-get($transition, fast);
+
+                            &::placeholder {
+                                color: $text-secondary;
+                            }
+
+                            &:focus {
+                                outline: 3px solid $accent-color;
+                            }
+                        }
+                    }
+                }
+
+                #calc-btn {
+                    margin-left: map-get($space, lg);
+                    padding: 5px 16px;
+                    outline: 0;
+                    border: 0;
+                    border-radius: map-get($radius, sm);
+                    background-color: $accent-color;
+                    font-size: map-get($font-size, md);
+                    font-weight: map-get($font-weight, semi-bold);
+                    color: $bg-primary;
+                    cursor: pointer;
+                    transition: map-get($transition, normal);
+
+                    &:hover {
+                        color: $text-primary;
+                        transform: translateY(-3px);
+                    }
+
+                    &.btnHover {
+                        animation-name: btnHover;
+                        animation-timing-function: linear;
+                        animation-duration: 0.5s;
+                        animation-iteration-count: infinite;
+                        animation-direction: alternate;
+                    }
+                }
+            }
+
+            &-history {
+                position: relative;
+
+                label.history-open {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    width: $history-w-close;
+                    height: $history-w-close;
+                    border-radius: map-get($radius, circle);
+                    background-color: $bg-secondary;
+                    color: $text-primary;
+                    font-size: 1.2rem;
+                    cursor: pointer;
+                    transition: map-get($transition, normal);
+
+                    &:hover {
+                        background-color: $accent-color;
+                        color: $bg-primary;
+                        transform: translateY(-3px);
+                    }
+                }
+
+                input {
+                    display: none;
+                }
+
+                input:checked ~ .el-history {
+                    width: $history-w-open;
+                    opacity: 1;
+                    visibility: visible;
+                }
+
+                .el-history {
+                    position: absolute;
+                    top: -5px;
+                    right: 0;
+                    width: $history-w-close;
+                    border-radius: map-get($radius, md);
+                    opacity: 0;
+                    visibility: hidden;
+                    z-index: 5;
+                    overflow: hidden;
+                    transition: map-get($transition, normal);
+
+                    &-list {
+                        padding: map-get($space, md);
+                        padding-bottom: map-get($space, lg);
+                        width: $history-w-open;
+                        display: flex;
+                        flex-flow: column nowrap;
+                        align-items: center;
+                        border-radius: map-get($radius, md);
+                        background-color: $bg-secondary;
+
+                        li {
+                            display: flex;
+                            align-items: center;
+                            justify-content: space-between;
+                            padding: map-get($space, sm);
+                            width: 100%;
+                            border-bottom: 0.5px solid $text-primary;
+                            background-color: $bg-secondary;
+                            font-size: 1.1rem;
+                            transition: map-get($transition, normal);
+                            cursor: pointer;
+
+                            &:first-child {
+                                border-bottom-width: 3px;
+                                font-size: 1.2rem;
+                                font-weight: map-get($font-weight, semi-bold);
+                                cursor: default;
+
+                                i {
+                                    cursor: pointer;
+                                }
+
+                                label:hover {
+                                    background-color: inherit;
+                                    color: inherit;
+                                    transform: unset;
+                                }
+
+                                &:hover {
+                                    background-color: inherit;
+                                }
+                            }
+
+                            &:hover {
+                                background-color: $bg-primary;
+                            }
+
+                            &.no-record {
+                                justify-content: center;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .calc-result {
+        margin-bottom: 0;
+
+        &-wrap {
+            margin: 0 auto;
+            padding: map-get($space, lg);
+            width: 80%;
+            height: $table-height;
+            border: 2px solid $text-primary;
+            border-radius: map-get($radius, $key: md);
+            overflow: scroll;
+
+            .hint {
+                width: 100%;
+                color: $text-primary;
+                font-size: map-get($font-size, subtitle);
+                font-weight: map-get($font-weight, semi-bold);
+                text-align: center;
+                cursor: default;
+                transition: map-get($transition, fast);
+
+                .point:hover {
+                    color: $accent-color;
+                }
+            }
+
+            &-table {
+                margin: 0 auto;
+                border-spacing: 0;
+                border-collapse: collapse;
+                background-color: $bg-primary;
+                color: $text-primary;
+                font-size: map-get($font-size, md);
+                text-align: center;
+
+                th,
+                td {
+                    padding: map-get($space, md) map-get($space, lg);
+                    border: 1px solid $text-secondary;
+                }
+
+                thead {
+                    position: sticky;
+                    top: calc(#{map-get($space, lg)} * -1);
+                    z-index: 1;
+
+                    tr {
+                        background-color: $accent-color;
+                        font-weight: map-get($font-weight, semi-bold);
+                    }
+                }
+
+                tbody {
+                    tr {
+                        &:nth-child(even) {
+                            background-color: $bg-secondary;
+                        }
+
+                        td:first-child {
+                            position: sticky;
+                            left: calc(#{map-get($space, lg)} * -1);
+                            background-color: $accent-color;
+                            font-weight: map-get($font-weight, semi-bold);
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@keyframes btnHover {
+    0% {
+        color: $bg-primary;
+        transform: translateY(0px);
+    }
+
+    100% {
+        color: $text-primary;
+        transform: translateY(-3px);
+    }
+}

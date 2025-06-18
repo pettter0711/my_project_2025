@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link
+            rel="apple-touch-icon"
+            sizes="57x57"
+            href="./assets/images/favicon/apple-icon-57x57.png"
+        />
+        <link
+            rel="apple-touch-icon"
+            sizes="60x60"
+            href="./assets/images/favicon/apple-icon-60x60.png"
+        />
+        <link
+            rel="apple-touch-icon"
+            sizes="72x72"
+            href="./assets/images/favicon/apple-icon-72x72.png"
+        />
+        <link
+            rel="apple-touch-icon"
+            sizes="76x76"
+            href="./assets/images/favicon/apple-icon-76x76.png"
+        />
+        <link
+            rel="apple-touch-icon"
+            sizes="114x114"
+            href="./assets/images/favicon/apple-icon-114x114.png"
+        />
+        <link
+            rel="apple-touch-icon"
+            sizes="120x120"
+            href="./assets/images/favicon/apple-icon-120x120.png"
+        />
+        <link
+            rel="apple-touch-icon"
+            sizes="144x144"
+            href="./assets/images/favicon/apple-icon-144x144.png"
+        />
+        <link
+            rel="apple-touch-icon"
+            sizes="152x152"
+            href="./assets/images/favicon/apple-icon-152x152.png"
+        />
+        <link
+            rel="apple-touch-icon"
+            sizes="180x180"
+            href="./assets/images/favicon/apple-icon-180x180.png"
+        />
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="192x192"
+            href="./assets/images/favicon/android-icon-192x192.png"
+        />
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="32x32"
+            href="./assets/images/favicon/favicon-32x32.png"
+        />
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="96x96"
+            href="./assets/images/favicon/favicon-96x96.png"
+        />
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="16x16"
+            href="./assets/images/favicon/favicon-16x16.png"
+        />
+        <link rel="manifest" href="./assets/images/favicon/manifest.json" />
+        <meta name="msapplication-TileColor" content="#ffffff" />
+        <meta
+            name="msapplication-TileImage"
+            content="./assets/images/favicon/ms-icon-144x144.png"
+        />
+        <meta name="theme-color" content="#ffffff" />
+        <meta
+            property="og:url"
+            content="http://127.0.0.1:5500/99calc/99calc.html"
+        />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="乘法表產生器" />
+        <meta property="og:description" content="乘法表產生器" />
+        <meta
+            property="og:image"
+            content="./assets/images/favicon/android-icon-192x192.png"
+        />
+        <meta
+            property="og:image:secure_url"
+            content="./assets/images/favicon/android-icon-192x192.png"
+        />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="192" />
+        <meta property="og:image:height" content="192" />
+        <meta property="fb:app_id" content="" />
+        <title>乘法表產生器</title>
+        <meta
+            name="description"
+            content="乘法表產生器，使用者可輸入任意兩種數字，即一鍵生成乘法表格，同時支援歷史紀錄功能。"
+        />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+        />
+        <link rel="stylesheet" href="../assets/css/reset.css" />
+        <link rel="stylesheet" href="../css/99calc.css" />
+        <link rel="stylesheet" href="../css/99calc_rwd.css" />
+    </head>
+    <body>
+        <div id="particles-js"></div>
+        <header class="header">
+            <div class="container">
+                <div class="header-wrap">
+                    <h1 class="title">乘法表產生器</h1>
+                </div>
+            </div>
+        </header>
+        <main class="main" id="v-app">
+            <div class="container">
+                <div class="num-input">
+                    <h3 class="title">請輸入數字相乘</h3>
+                    <div class="num-input-wrap">
+                        <div class="num-input-wrap-el">
+                            <div class="inputs">
+                                <div>
+                                    <label for="num-1">數字1</label>
+                                    <input
+                                        type="number"
+                                        name="num"
+                                        id="num-1"
+                                        placeholder="數字"
+                                        v-model.trim="num1"
+                                        @keyup.enter="calcTable"
+                                        @focus="num1 = ''"
+                                        required
+                                    />
+                                </div>
+                                <div>
+                                    <label for="num-2">數字2</label>
+                                    <input
+                                        type="number"
+                                        name="num"
+                                        id="num-2"
+                                        placeholder="數字"
+                                        v-model.trim="num2"
+                                        @keyup.enter="calcTable"
+                                        @focus="num2 = ''"
+                                        required
+                                    />
+                                </div>
+                            </div>
+                            <button
+                                id="calc-btn"
+                                :class="{btnHover: isHovering}"
+                                @click="calcTable"
+                            >
+                                送出
+                            </button>
+                        </div>
+                        <div class="num-input-wrap-history">
+                            <label for="el-history-toggle" class="history-open">
+                                <i class="fa-solid fa-clock-rotate-left"></i>
+                            </label>
+                            <input
+                                type="checkbox"
+                                id="el-history-toggle"
+                                v-model="historyToggle"
+                            />
+                            <div
+                                class="el-history"
+                                v-click-outside="() => historyToggle = false"
+                            >
+                                <ul class="el-history-list">
+                                    <li class="item">
+                                        <span>歷史紀錄</span>
+                                        <label
+                                            for="el-history-toggle"
+                                            class="history-close"
+                                        >
+                                            <i
+                                                class="fa-solid fa-circle-xmark"
+                                            ></i>
+                                        </label>
+                                    </li>
+                                    <li
+                                        class="item no-record"
+                                        v-if="historyNums.length === 0"
+                                    >
+                                        無紀錄
+                                    </li>
+                                    <li
+                                        class="item"
+                                        v-for="(num, index) in historyNums"
+                                        @click="insertHistory(num)"
+                                        v-else
+                                    >
+                                        <span>{{num.n1}} x {{num.n2}}</span>
+                                        <span @click.stop="removeHistory(index)"
+                                            >&times</span
+                                        >
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="calc-result">
+                    <h3 class="title">乘法表結果</h3>
+                    <div class="calc-result-wrap">
+                        <div class="hint" v-if="showTable == false">
+                            <span>按下</span>
+                            <span
+                                class="point"
+                                @mouseenter="isHovering = true"
+                                @mouseleave="isHovering = false"
+                                >送出</span
+                            >
+                            <span>後即產生表格!</span>
+                        </div>
+                        <template v-else>
+                            <table class="calc-result-wrap-table">
+                                <thead>
+                                    <tr>
+                                        <th></th>
+                                        <th v-for="i in elNum1">{{ i }}</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr v-for="j in elNum2">
+                                        <td>{{ j }}</td>
+                                        <td v-for="i in elNum1">{{ j * i }}</td>
+                                    </tr>
+                                </tbody>
+                                <!-- <thead>
+                                    <tr>
+                                        <th></th>
+                                        <th>1</th>
+                                        <th>2</th>
+                                        <th>3</th>
+                                        <th>4</th>
+                                        <th>5</th>
+                                        <th>6</th>
+                                        <th>7</th>
+                                        <th>8</th>
+                                        <th>9</th>
+                                        <th>10</th>
+                                        <th>11</th>
+                                        <th>12</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>1</td>
+                                        <td>2</td>
+                                        <td>3</td>
+                                        <td>4</td>
+                                        <td>5</td>
+                                        <td>6</td>
+                                        <td>7</td>
+                                        <td>8</td>
+                                        <td>9</td>
+                                        <td>10</td>
+                                        <td>11</td>
+                                        <td>12</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td>1</td>
+                                        <td>2</td>
+                                        <td>3</td>
+                                        <td>4</td>
+                                        <td>5</td>
+                                        <td>6</td>
+                                        <td>7</td>
+                                        <td>8</td>
+                                        <td>9</td>
+                                        <td>10</td>
+                                        <td>11</td>
+                                        <td>12</td>
+                                    </tr>
+                                    <tr>
+                                        <td>3</td>
+                                        <td>1</td>
+                                        <td>2</td>
+                                        <td>3</td>
+                                        <td>4</td>
+                                        <td>5</td>
+                                        <td>6</td>
+                                        <td>7</td>
+                                        <td>8</td>
+                                        <td>9</td>
+                                        <td>10</td>
+                                        <td>11</td>
+                                        <td>12</td>
+                                    </tr>
+                                    <tr>
+                                        <td>4</td>
+                                        <td>1</td>
+                                        <td>2</td>
+                                        <td>3</td>
+                                        <td>4</td>
+                                        <td>5</td>
+                                        <td>6</td>
+                                        <td>7</td>
+                                        <td>8</td>
+                                        <td>9</td>
+                                        <td>10</td>
+                                        <td>11</td>
+                                        <td>12</td>
+                                    </tr>
+                                    <tr>
+                                        <td>5</td>
+                                        <td>1</td>
+                                        <td>2</td>
+                                        <td>3</td>
+                                        <td>4</td>
+                                        <td>5</td>
+                                        <td>6</td>
+                                        <td>7</td>
+                                        <td>8</td>
+                                        <td>9</td>
+                                        <td>10</td>
+                                        <td>11</td>
+                                        <td>12</td>
+                                    </tr>
+                                    <tr>
+                                        <td>6</td>
+                                        <td>1</td>
+                                        <td>2</td>
+                                        <td>3</td>
+                                        <td>4</td>
+                                        <td>5</td>
+                                        <td>6</td>
+                                        <td>7</td>
+                                        <td>8</td>
+                                        <td>9</td>
+                                        <td>10</td>
+                                        <td>11</td>
+                                        <td>12</td>
+                                    </tr>
+                                    <tr>
+                                        <td>7</td>
+                                        <td>1</td>
+                                        <td>2</td>
+                                        <td>3</td>
+                                        <td>4</td>
+                                        <td>5</td>
+                                        <td>6</td>
+                                        <td>7</td>
+                                        <td>8</td>
+                                        <td>9</td>
+                                        <td>10</td>
+                                        <td>11</td>
+                                        <td>12</td>
+                                    </tr>
+                                </tbody> -->
+                            </table>
+                        </template>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </body>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    <script type="module" src="./assets/js/99calc.js"></script>
+    <script type="module" src="./assets/js/particles.js"></script>
+</html>

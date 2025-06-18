@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
+            rel="stylesheet"
+        />
+        <title>購購購中心</title>
+        <link rel="stylesheet" href="../assets/css/reset.css" />
+        <link rel="stylesheet" href="assets/css/main.css" />
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    </head>
+    <body>
+        <header>
+            <div class="container">
+                <div class="head-wrap">
+                    <div class="head-title">
+                        <div class="logo">
+                            <img
+                                src="assets/images/logo_white.png"
+                                alt="logo"
+                            />
+                        </div>
+                        <div class="title">
+                            <a href="#">
+                                <span class="zh">購購購中心</span>
+                                <span class="en">GO-GO-GO SHOPPING</span>
+                            </a>
+                        </div>
+                    </div>
+                    <ul class="head-menu" id="head-menu">
+                        <li v-for="item in menuItems">
+                            <a :href="`${item.url}`">
+                                <div class="zh">{{ item.zh }}</div>
+                                <div class="en">{{ item.en}}</div>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </header>
+        <div class="main">
+            <div class="container">
+                <div class="checkout-wrap">
+                    <h2 class="sub-title">訂單明細</h2>
+                    <div class="checkout">
+                        <input type="checkbox" id="detail-trigger" />
+                        <div class="product-amount">
+                            <div class="description">
+                                購物車有<strong>10</strong>件商品
+                            </div>
+                            <div class="product-detail-trigger">
+                                <label
+                                    for="detail-trigger"
+                                    class="trigger-open"
+                                >
+                                    <span>展開</span>
+                                    <span class="material-symbols-outlined">
+                                        arrow_drop_down
+                                    </span>
+                                </label>
+                                <label
+                                    for="detail-trigger"
+                                    class="trigger-close"
+                                >
+                                    <span>收起</span>
+                                    <span class="material-symbols-outlined">
+                                        arrow_drop_up
+                                    </span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="product-detail">
+                            <div class="product-detail-title">
+                                <span>商品</span>
+                                <span>單價</span>
+                                <span>數量</span>
+                                <span>小計</span>
+                            </div>
+                            <div class="product-detail-content">
+                                <div class="product-name">00</div>
+                                <div class="product-cost">00</div>
+                                <div class="product-qty">00</div>
+                                <div class="product-subtotal">00</div>
+                            </div>
+                            <div class="product-detail-content">
+                                <div class="product-name">00</div>
+                                <div class="product-cost">00</div>
+                                <div class="product-qty">00</div>
+                                <div class="product-subtotal">00</div>
+                            </div>
+                            <div class="product-detail-content">
+                                <div class="product-name">00</div>
+                                <div class="product-cost">00</div>
+                                <div class="product-qty">00</div>
+                                <div class="product-subtotal">00</div>
+                            </div>
+                        </div>
+                        <div class="total-content">
+                            <div class="subtotal">
+                                <span class="total-item-title">訂單小計</span>
+                                <span class="total-item-content">1111</span>
+                            </div>
+                            <div class="shipping">
+                                <span class="total-item-title">運費</span>
+                                <span class="total-item-content">1111</span>
+                            </div>
+                            <div class="coupon">
+                                <span class="total-item-title">優惠券</span>
+                                <span class="total-item-content">1111</span>
+                            </div>
+                            <div class="total">
+                                <span class="total-item-title">訂單總計</span>
+                                <span class="total-item-content">1111</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="buyer-info-wrap">
+                    <h2 class="sub-title">訂購人資訊</h2>
+                    <div class="buyer-info-list">
+                        <div class="buyer-info-item">
+                            <label for="checkout-name">姓名:</label>
+                            <input
+                                type="text"
+                                id="checkout-name"
+                                placeholder="姓名"
+                            />
+                        </div>
+                        <div class="buyer-info-item">
+                            <label for="checkout-phone">電話:</label>
+                            <input
+                                type="text"
+                                id="checkout-phone"
+                                placeholder="電話號碼"
+                            />
+                        </div>
+                        <div class="buyer-info-item">
+                            <label for="checkout-post">地址:</label>
+                            <input
+                                type="text"
+                                id="checkout-post"
+                                placeholder="郵遞區號"
+                            />
+                            <input
+                                type="text"
+                                id="checkout-address"
+                                placeholder="地址"
+                            />
+                        </div>
+                        <div class="buyer-info-item">
+                            <label for="checkout-remark">備註:</label>
+                            <input
+                                type="text"
+                                id="checkout-remark"
+                                placeholder="包裹備註"
+                            />
+                        </div>
+                    </div>
+                </div>
+                <div class="pay-method-wrap">
+                    <h2 class="sub-title">付款方式</h2>
+                    <ul class="pay-option">
+                        <li class="pay-option-item">
+                            <input
+                                type="radio"
+                                name="pay-method"
+                                id="pay-cash"
+                            />
+                            <label for="pay-cash">貨到付款</label>
+                        </li>
+                        <li class="pay-option-item">
+                            <input
+                                type="radio"
+                                name="pay-method"
+                                id="pay-atm"
+                            />
+                            <label for="pay-atm">銀行轉帳</label>
+                        </li>
+                        <li class="pay-option-item">
+                            <input
+                                type="radio"
+                                name="pay-method"
+                                id="pay-credit"
+                            />
+                            <label for="pay-credit">信用卡</label>
+                        </li>
+                    </ul>
+                    <div class="credit-info">
+                        <div class="top-part">
+                            <label for="credit-num-1">信用卡號碼:</label>
+                            <ul class="credit-num">
+                                <li>
+                                    <input
+                                        type="text"
+                                        id="credit-num-1"
+                                        name="credit-num-1"
+                                        maxlength="4"
+                                    />
+                                </li>
+                                <li>
+                                    <input
+                                        type="text"
+                                        id="credit-num-2"
+                                        name="credit-num-2"
+                                        maxlength="4"
+                                    />
+                                </li>
+                                <li>
+                                    <input
+                                        type="text"
+                                        id="credit-num-3"
+                                        name="credit-num-3"
+                                        maxlength="4"
+                                    />
+                                </li>
+                                <li>
+                                    <input
+                                        type="text"
+                                        id="credit-num-4"
+                                        name="credit-num-4"
+                                        maxlength="4"
+                                    />
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="bottom-part">
+                            <div class="credit-check-wrap">
+                                <label for="credit-check">檢查碼: </label>
+                                <input
+                                    type="text"
+                                    id="credit-check"
+                                    maxlength="3"
+                                />
+                            </div>
+                            <div class="credit-valid-wrap">
+                                <label for="credit-month">有效期限: </label>
+                                <input
+                                    type="text"
+                                    id="credit-month"
+                                    maxlength="2"
+                                />
+                                <span style="font-size: 1.4rem">/</span>
+                                <input
+                                    type="text"
+                                    id="credit-year"
+                                    maxlength="2"
+                                />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="checkout-btn">
+                    <button>送出訂單</button>
+                </div>
+            </div>
+        </div>
+    </body>
+    <script src="assets/js/checkout.js"></script>
+</html>

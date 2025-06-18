@@ -1,0 +1,44 @@
+{
+    "gogo_50": {
+        "type": "sale",
+        "name": "gogo_50",
+        "value": 50,
+        "title": "優惠折扣"
+    },
+    "gogo_20": {
+        "type": "sale",
+        "name": "gogo_20",
+        "value": 20,
+        "title": "優惠折扣"
+    },
+    "shipping_free": {
+        "type": "ship",
+        "name": "shipping_free",
+        "value": "free",
+        "title": "運費折抵"
+    },
+    "shipping_50": {
+        "type": "ship",
+        "name": "shipping_50",
+        "value": 50,
+        "title": "運費折抵"
+    },
+    "feed_10": {
+        "type": "feedback",
+        "name": "feed_10",
+        "value": 10,
+        "title": "回饋金"
+    },
+    "feed_5": {
+        "type": "feedback",
+        "name": "feed_5",
+        "value": 5,
+        "title": "回饋金"
+    },
+    "feed_2": {
+        "type": "feedback",
+        "name": "feed_2",
+        "value": 2,
+        "title": "回饋金"
+    }
+}

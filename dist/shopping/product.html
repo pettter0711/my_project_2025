@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>購購購中心</title>
+        <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=shopping_cart"
+        />
+        <link rel="stylesheet" href="../assets/css/reset.css" />
+        <link rel="stylesheet" href="assets/css/main.css" />
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    </head>
+    <body>
+        <header>
+            <div class="container">
+                <div class="head-wrap">
+                    <div class="head-title">
+                        <div class="logo">
+                            <img
+                                src="assets/images/logo_white.png"
+                                alt="logo"
+                            />
+                        </div>
+                        <div class="title">
+                            <a href="#">
+                                <span class="zh">購購購中心</span>
+                                <span class="en">GO-GO-GO SHOPPING</span>
+                            </a>
+                        </div>
+                    </div>
+                    <ul class="head-menu" id="head-menu">
+                        <li v-for="item in menuItems">
+                            <a :href="`${item.url}`">
+                                <div class="zh">{{ item.zh }}</div>
+                                <div class="en">{{ item.en}}</div>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </header>
+        <div class="main" id="product-app">
+            <div class="container">
+                <div class="product-section">
+                    <template v-for="(product, index) in products">
+                        <div class="product">
+                            <div class="product-info">
+                                <div
+                                    class="product-img"
+                                    :style="{
+                                        'background-image': `url(${product.img})`,
+                                    }"
+                                ></div>
+                                <div class="product-content">
+                                    <div class="text">
+                                        <div class="name">{{product.name}}</div>
+                                        <div class="intro">
+                                            <p>{{product.intro}}</p>
+                                        </div>
+                                    </div>
+                                    <div class="price">${{product.price}}</div>
+                                </div>
+                            </div>
+                            <button
+                                class="product-btn"
+                                @click="addToCart(product)"
+                            >
+                                <span class="material-symbols-outlined">
+                                    shopping_cart
+                                </span>
+                                <span>加入購物車</span>
+                            </button>
+                        </div>
+                    </template>
+                </div>
+            </div>
+        </div>
+    </body>
+    <script src="assets/js/main.js"></script>
+</html>

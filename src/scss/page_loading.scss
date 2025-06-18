@@ -1,0 +1,173 @@
+// color
+$bg-primary: #272822;
+$bg-secondary: #3e3d32;
+$text-primary: #f8f8f2;
+$text-secondary: #75715e;
+$accent-color: #5dc4ea;
+$border-color: #49483e;
+
+$font-family: Arial, Helvetica, sans-serif;
+
+$font-size: (
+    "base": 16px,
+    "sm": 0.85rem,
+    "md": 1rem,
+    "lg": 1.5rem,
+    "title": 2rem,
+);
+
+$font-weight: (
+    "ex-light": 300,
+    "light": 400,
+    "std": 500,
+    "semi-bold": 600,
+    "bold": 700,
+);
+
+$space-unit: 8px;
+$space: (
+    "xs": calc(#{$space-unit} * 0.5),
+    "sm": calc(#{$space-unit} * 1),
+    "md": calc(#{$space-unit} * 2),
+    "lg": calc(#{$space-unit} * 3),
+    "xl": calc(#{$space-unit} * 4),
+);
+
+$radius: (
+    "sm": 4px,
+    "md": 8px,
+    "lg": 16px,
+    "pill": 9999px,
+);
+
+$shadow: (
+    "sm": 0 1px 3px rgba(0, 0, 0, 0.12),
+    "md": 0 4px 6px rgba(0, 0, 0, 0.1),
+    "lg": 0 10px 15px rgba(0, 0, 0, 0.1),
+);
+
+$transition: (
+    "fast": 0.15s ease-in-out,
+    "normal": 0.3s ease-in-out,
+    "slow": 0.5s ease-in-out,
+);
+
+html,
+body {
+    font-family: $font-family;
+    font-size: map-get($font-size, base);
+}
+
+.main {
+    width: 100%;
+    height: 100vh;
+    background-color: $bg-primary;
+
+    &-position {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-flow: column nowrap;
+        align-items: center;
+        justify-content: center;
+        gap: map-get($space, xl);
+    }
+
+    .load-page {
+        width: 100%;
+        text-align: center;
+
+        .load-title {
+            font-size: map-get($font-size, title);
+            font-weight: map-get($font-weight, semi-bold);
+            color: $text-primary;
+            margin-bottom: map-get($space, xl);
+        }
+
+        .load-progress {
+            margin: 0 auto;
+            margin-bottom: map-get($space, md);
+            width: 80%;
+
+            &-num {
+                margin-bottom: map-get($space, sm);
+                font-size: map-get($font-size, lg);
+                font-weight: map-get($font-weight, std);
+                color: $text-primary;
+            }
+
+            &-bar {
+                --border: 5px;
+                --h: 30px;
+                position: relative;
+                width: 100%;
+                height: var(--h);
+                border: var(--border) solid $accent-color;
+                border-radius: map-get($radius, pill);
+                background-color: $text-primary;
+                overflow: hidden;
+
+                &::after {
+                    --h-r: 1;
+                    position: absolute;
+                    content: "";
+                    // top: calc((var(--h) * var(--h-r)) / 2 + var(--border));
+                    top: var(--border);
+                    left: var(--border);
+                    width: calc(var(--progress-w) - (var(--border) * 2));
+                    height: calc(100% - (var(--border) * 2));
+                    border-radius: map-get($radius, pill);
+                    background-color: var(--progress-color);
+                    // transition: map-get($transition, fast);
+                }
+            }
+        }
+
+        .btn-area {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            gap: map-get($space, sm);
+
+            button.load-btn {
+                padding: 5px 12px;
+                outline: 0;
+                border: 0;
+                border-radius: map-get($radius, sm);
+                background-color: $accent-color;
+                color: $text-primary;
+                font-size: map-get($font-size, md);
+                font-weight: map-get($font-weight, std);
+                cursor: pointer;
+                transform: scale(1);
+                transition: map-get($transition, normal);
+
+                &:hover {
+                    transform: scale(1.2);
+                    box-shadow: map-get($shadow, md);
+                }
+
+                &.loading {
+                    background-color: #2196f3;
+                }
+
+                &.paused {
+                    background-color: #ff9800;
+                }
+
+                &.completed {
+                    background-color: #4caf50;
+                }
+            }
+        }
+    }
+
+    .hint-page {
+        .keyboard-hints {
+            margin: 0 auto;
+            font-size: map-get($font-size, std);
+            color: $text-secondary;
+        }
+    }
+}

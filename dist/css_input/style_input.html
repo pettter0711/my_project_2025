@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
+            rel="stylesheet"
+        />
+        <title>STYLE INPUT</title>
+        <link rel="stylesheet" href="../assets/css/reset.css" />
+        <link rel="stylesheet" href="../css/style_input.css" />
+        <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    </head>
+    <body>
+        <header>
+            <div class="head-wrap">
+                <div class="container">
+                    <h1 class="title">樣式呈現器</h1>
+                </div>
+            </div>
+        </header>
+        <main class="v-app">
+            <div class="container">
+                <section class="css-input">
+                    <div class="css-input-wrap">
+                        <div class="user-area">
+                            <div class="el-input">
+                                <select
+                                    name=""
+                                    id="styleType"
+                                    v-model="styleType"
+                                    @change="styleInput = styleType == 'backgroundColor'? '#':''"
+                                >
+                                    <option value="backgroundColor">
+                                        背景顏色
+                                    </option>
+                                    <option value="borderRadius">圓角</option>
+                                </select>
+                                <input
+                                    type="text"
+                                    name=""
+                                    ref="inputStyle"
+                                    placeholder="輸入樣式"
+                                    v-model.trim="styleInput"
+                                    @keyup.enter="styleChange($event)"
+                                />
+                                <button class="btn" @click="styleChange()">
+                                    送出
+                                </button>
+                                <button
+                                    class="btn danger"
+                                    @click="styleClear()"
+                                >
+                                    清除樣式
+                                </button>
+                                <button class="btn" @click="focus()">
+                                    Focus
+                                </button>
+                            </div>
+                            <div class="box-btn">
+                                <button
+                                    class="btn add-box"
+                                    data-set="增加方塊"
+                                    @click="addBox()"
+                                >
+                                    <span class="material-symbols-outlined">
+                                        add
+                                    </span>
+                                </button>
+                                <button
+                                    class="btn remove-box"
+                                    data-set="移除方塊"
+                                    @click="removeBox()"
+                                >
+                                    <span class="material-symbols-outlined">
+                                        remove
+                                    </span>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="result">
+                            <div v-for="(box, index) in boxes">
+                                <input
+                                    type="checkbox"
+                                    :id="index"
+                                    :value="index"
+                                    v-model="boxCheck"
+                                    hidden
+                                />
+                                <label class="box" :for="index"></label>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </body>
+    <!-- <script src="assets/js/style-input_origin.js"></script> -->
+    <script src="assets/js/style-input_ai.js"></script>
+</html>

@@ -1,0 +1,37 @@
+[
+    {
+        "id": 1,
+        "name": "購購早餐",
+        "intro": "美味的早餐",
+        "price": 100,
+        "img": "assets/images/product-1.jpg"
+    },
+    {
+        "id": 2,
+        "name": "購購午餐",
+        "intro": "美味的午餐",
+        "price": 150,
+        "img": "assets/images/product-1.jpg"
+    },
+    {
+        "id": 3,
+        "name": "購購晚餐",
+        "intro": "美味的晚餐",
+        "price": 200,
+        "img": "assets/images/product-1.jpg"
+    },
+    {
+        "id": 4,
+        "name": "購購甜點",
+        "intro": "美味的甜點",
+        "price": 80,
+        "img": "assets/images/product-1.jpg"
+    },
+    {
+        "id": 5,
+        "name": "購購飲料",
+        "intro": "美味的飲料",
+        "price": 80,
+        "img": "assets/images/product-1.jpg"
+    }
+]

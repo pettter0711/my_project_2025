@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>頁面載入效果</title>
+        <link rel="stylesheet" href="../assets/css/reset.css" />
+        <link rel="stylesheet" href="../css/page_loading.css" />
+    </head>
+    <body>
+        <main class="main">
+            <div class="container">
+                <div class="main-position">
+                    <section class="load-page">
+                        <div class="load-title">
+                            <div>資料載入中...</div>
+                        </div>
+                        <div class="load-progress">
+                            <div class="load-progress-num">0%</div>
+                            <div
+                                class="load-progress-bar"
+                                style="--progress-w: 0%"
+                            ></div>
+                        </div>
+                        <div class="btn-area">
+                            <button class="load-btn">開始載入</button>
+                        </div>
+                    </section>
+                    <section class="hint-page">
+                        <div class="keyboard-hints">
+                            <p>快捷鍵: 空白鍵 = 開始/暫停/繼續, R = 重新開始</p>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </main>
+    </body>
+
+    <!-- <script src="assets/js/progress_ai.js"></script> -->
+    <script src="assets/js/progress_raf.js"></script>
+</html>

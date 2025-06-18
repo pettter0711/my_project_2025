@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <link rel="stylesheet" href="../assets/css/reset.css" />
+        <link rel="stylesheet" href="assets/css/formData.css" />
+    </head>
+    <body>
+        <header class="header">
+            <div class="container">
+                <h1 class="header-title">FormData AJAX Transfer</h1>
+                <div class="">
+                    <a
+                        href="https://pjchender.dev/webapis/webapis-form-formdata/"
+                        target="_blank"
+                        >FormData說明</a
+                    >
+                    <a
+                        href="https://pjchender.dev/webapis/webapis-file-input/"
+                        target="_blank"
+                        >file預覽說明</a
+                    >
+                </div>
+            </div>
+        </header>
+        <hr />
+        <main class="main" id="app">
+            <div class="container">
+                <div class="form-title">
+                    <h2>練習用表單</h2>
+                </div>
+                <form @submit.stop.prevent="handleSubmit">
+                    <div class="form-group">
+                        <label for="name">Name:</label>
+                        <input
+                            type="text"
+                            name="name"
+                            id="name"
+                            class="form-control"
+                            v-model="name"
+                            placeholder="Enter name"
+                            required
+                        />
+                    </div>
+                    <div class="form-group">
+                        <label for="image">Image:</label>
+                        <input
+                            type="file"
+                            name="image"
+                            id="image"
+                            class="form-control-file"
+                            accept="image/*"
+                        />
+                    </div>
+                    <div class="form-group">
+                        <button class="btn">送出</button>
+                    </div>
+                </form>
+            </div>
+        </main>
+    </body>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="assets/js/formData_test.js"></script>
+</html>

@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <link rel="stylesheet" href="assets/css/reset.css" />
+        <style>
+            head,
+            body {
+                font-family: Arial, Helvetica, sans-serif;
+                font-size: 16px;
+                background-color: #20212e;
+            }
+
+            :root {
+                --c: #3881ef;
+            }
+
+            .main {
+                width: 100%;
+                height: 100vh;
+            }
+
+            .loading-wrap {
+                margin: 0 auto;
+                width: 80%;
+                height: 100%;
+                display: flex;
+                flex-flow: column nowrap;
+                align-items: center;
+                justify-content: center;
+                gap: 10px;
+                text-align: center;
+            }
+
+            .loading-num {
+                margin-bottom: 10px;
+                font-size: 1.5rem;
+                font-weight: 500;
+                color: #fff;
+                letter-spacing: 0.05rem;
+            }
+
+            .loading-bar {
+                --h: 30px;
+                --padding: 5px;
+                --border: 3px;
+                display: flex;
+                align-items: center;
+                position: relative;
+                padding: var(--padding);
+                width: 100%;
+                height: var(--h);
+                border: var(--border) solid var(--c);
+                border-radius: 1000px;
+                overflow: hidden;
+            }
+
+            .loading-bar::after {
+                position: absolute;
+                content: "";
+                left: var(--padding);
+                width: calc(var(--bar-w) - var(--padding) * 2);
+                height: calc(var(--h) - ((var(--padding) + var(--border)) * 2));
+                border-radius: 1000px;
+                background-color: var(--c);
+            }
+
+            .btn-area > button {
+                padding: 5px 20px;
+                outline: 0;
+                border: 0;
+                border-radius: 6px;
+                background-color: var(--c);
+                font-size: 1.1rem;
+                color: #fff;
+                transform: scale(1);
+                cursor: pointer;
+                transition: 0.3s ease-in-out;
+            }
+
+            .btn-area > button:hover {
+                background-color: #134fa9;
+                transform: scale(1.1);
+            }
+        </style>
+    </head>
+    <body>
+        <main class="main">
+            <div class="container">
+                <div class="loading-wrap">
+                    <div class="loading-num">0%</div>
+                    <div class="loading-bar" style="--bar-w: 0%"></div>
+                    <div class="btn-area">
+                        <button class="loading-btn">載入</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </body>
+    <script>
+        let loadNum = document.querySelector(".loading-num");
+        let loadBar = document.querySelector(".loading-bar");
+        let loadBtn = document.querySelector(".loading-btn");
+        let progress = 0;
+        let maxLoad = 100;
+
+        // const loading = () => {
+        //     let timer = "";
+        //     loadNum.innerHTML = `${Math.round(progress)}%`;
+        //     loadBar.style.setProperty("--bar-w", `${Math.round(progress)}%`);
+        //     timer = requestAnimationFrame(loading);
+        //     progress += Math.random() * 2;
+
+        //     if (Math.round(progress) >= maxLoad) {
+        //         progress = maxLoad;
+        //         loadNum.innerHTML = `${Math.round(progress)}%`;
+        //         loadBar.style.setProperty(
+        //             "--bar-w",
+        //             `${Math.round(progress)}%`
+        //         );
+
+        //         loadBtn.innerHTML = "重新載入";
+        //         cancelAnimationFrame(timer);
+        //         timer = null;
+        //     }
+        // };
+
+        // loadBtn.addEventListener("click", (e) => {
+        //     cancelAnimationFrame(loading); // 先取消現有的動畫
+        //     progress = 0; // 重置進度
+        //     loadBtn.innerHTML = "載入";
+        //     timer = requestAnimationFrame(loading); // 開始新的動畫
+        // });
+
+        let duration = 5000; //預計loading()運行時長
+        let startTime = 0; // 開始執行的時間點
+
+        const loading = (timestamp) => {
+            if (!startTime) {
+                startTime = timestamp; //先抓使用者開始執行的時間點
+            }
+
+            let elapsedTime = timestamp - startTime; //開始時間點不變，計算loading()運行的時長
+            let speed = Math.min(elapsedTime / duration, 1);
+            // 在預計時長內，每一次執行loading()的時間比例 (從0到1)
+            // 時間比例會在預計時長內，從0跑到1，依下方程式碼，跑到1就停止運行
+            // 此處邏輯為，不論進度條寬度多少，用時最大為5000 (5秒)
+
+            console.log(startTime, timestamp);
+            console.log(elapsedTime);
+            console.log(`speed: ${speed}`);
+
+            let timer = "";
+            if (speed < 1) {
+                loadNum.innerHTML = `${+Math.round(speed * 100)}%`;
+                loadBar.style.setProperty(
+                    "--bar-w",
+                    `${+Math.round(speed * 100)}%`
+                );
+                timer = requestAnimationFrame(loading);
+            } else {
+                // speed = maxLoad;
+                // loadNum.innerHTML = `${+Math.round(speed)}%`;
+                // loadBar.style.setProperty("--bar-w", `${+Math.round(speed)}%`);
+
+                loadBtn.innerHTML = "重新載入";
+                cancelAnimationFrame(timer);
+                timer = null;
+            }
+        };
+
+        loadBtn.addEventListener("click", (e) => {
+            cancelAnimationFrame(loading); // 先取消現有的動畫
+            progress = 0; // 重置進度
+            loadBtn.innerHTML = "載入";
+            timer = requestAnimationFrame(loading); // 開始新的動畫
+            startTime = 0;
+        });
+
+        // let interval = "";
+        // loadBtn.addEventListener("click", (e) => {
+        //     clearInterval(interval);
+        //     interval = null;
+        //     progress = 0;
+        //     loadBtn.innerHTML = "載入";
+        //     loading();
+        // });
+
+        // const loading = () => {
+        //     interval = setInterval(() => {
+        //         loadNum.innerHTML = `${Math.round(progress)}%`;
+        //         loadBar.style.setProperty(
+        //             "--bar-w",
+        //             `${Math.round(progress)}%`
+        //         );
+        //         progress += Math.random() * 5;
+
+        //         if (progress >= maxLoad) {
+        //             progress = maxLoad;
+        //             loadNum.innerHTML = `${Math.round(progress)}%`;
+        //             loadBar.style.setProperty(
+        //                 "--bar-w",
+        //                 `${Math.round(progress)}%`
+        //             );
+
+        //             clearInterval(interval);
+        //             interval = null;
+        //             loadBtn.innerHTML = "重新載入";
+        //         }
+        //     }, 50);
+        // };
+    </script>
+</html>

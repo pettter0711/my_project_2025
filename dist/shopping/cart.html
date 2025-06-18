@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
+            rel="stylesheet"
+        />
+        <title>購購購中心</title>
+        <link rel="stylesheet" href="../assets/css/reset.css" />
+        <link rel="stylesheet" href="assets/css/main.css" />
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    </head>
+    <body>
+        <header>
+            <div class="container">
+                <div class="head-wrap">
+                    <div class="head-title">
+                        <div class="logo">
+                            <img
+                                src="assets/images/logo_white.png"
+                                alt="logo"
+                            />
+                        </div>
+                        <div class="title">
+                            <a href="#">
+                                <span class="zh">購購購中心</span>
+                                <span class="en">GO-GO-GO SHOPPING</span>
+                            </a>
+                        </div>
+                    </div>
+                    <ul class="head-menu" id="head-menu">
+                        <li v-for="item in menuItems">
+                            <a :href="`${item.url}`">
+                                <div class="zh">{{ item.zh }}</div>
+                                <div class="en">{{ item.en }}</div>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </header>
+        <div class="main" id="cart-app">
+            <div class="container">
+                <div class="cart-section">
+                    <div class="cart-title">
+                        <span>商品內容</span>
+                        <span>單價</span>
+                        <span>數量</span>
+                        <span>小計</span>
+                        <span>移除</span>
+                    </div>
+                    <template v-for="(product, index) in products">
+                        <div class="cart">
+                            <div class="cart-info">
+                                <div
+                                    class="cart-img"
+                                    :style="{'background-image': `url(${product.img})`}"
+                                ></div>
+                                <div class="cart-text">
+                                    <div class="cart-name">
+                                        {{ product.name }}
+                                    </div>
+                                    <div class="cart-intro">
+                                        {{ product.intro }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="cart-price">{{ product.price }}</div>
+                            <div class="cart-qty">
+                                <button
+                                    class="minus-btn"
+                                    @click="minusQty(product)"
+                                >
+                                    <span class="material-symbols-outlined">
+                                        remove
+                                    </span>
+                                </button>
+                                <div class="qty">{{ product.qty }}</div>
+                                <button
+                                    class="add-btn"
+                                    @click="addQty(product)"
+                                >
+                                    <span class="material-symbols-outlined">
+                                        add
+                                    </span>
+                                </button>
+                            </div>
+                            <div class="cart-subtotal">
+                                {{ product.price * product.qty }}
+                            </div>
+                            <button class="remove-btn" @click="remove(product)">
+                                <span class="material-symbols-outlined">
+                                    delete
+                                </span>
+                            </button>
+                        </div>
+                    </template>
+                </div>
+                <div class="check-section">
+                    <div class="buy-more">
+                        <a href="product.html" class="more">
+                            <span>加入其他商品</span>
+                            <span class="material-symbols-outlined">
+                                shopping_cart
+                            </span>
+                        </a>
+                    </div>
+                    <div class="check">
+                        <div class="subtotal">
+                            <div class="title">小計</div>
+                            <div class="content">{{ subTotal }}</div>
+                        </div>
+                        <div class="shipping">
+                            <div class="title">運費</div>
+                            <select name="" id="area-select" v-model="shipArea">
+                                <option value="tw-main" selected>
+                                    台灣本島
+                                </option>
+                                <option value="tw-out">台灣離島</option>
+                                <option value="oversea">海外地區</option>
+                            </select>
+                            <div class="content">{{ shipping }}</div>
+                        </div>
+                        <div class="coupon">
+                            <div class="coupon-input">
+                                <label for="coupon" class="title">優惠券</label>
+                                <div class="content">
+                                    <input
+                                        type="text"
+                                        name="coupon"
+                                        id="coupon"
+                                        placeholder="優惠券代碼"
+                                        v-model.trim="couponInput"
+                                        @keyup.enter="couponVerify()"
+                                    />
+                                    <button
+                                        class="coupon-btn"
+                                        @click="couponVerify()"
+                                    >
+                                        使用
+                                    </button>
+                                </div>
+                            </div>
+                            <ul class="discount-list" v-if="couponEl">
+                                <li v-for="(coupon, index) in couponEl">
+                                    <span>{{ coupon.title }}</span>
+                                    <span>{{ coupon.html }}</span>
+                                    <span
+                                        class="d-btn"
+                                        @click="removeCoupon(coupon)"
+                                        >&times;</span
+                                    >
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="total">
+                            <div class="title">總計</div>
+                            <div class="content">{{ cartTotal }}</div>
+                        </div>
+                        <a href="checkout.html" class="check-btn">結帳</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+    <script src="assets/js/cart.js"></script>
+</html>
