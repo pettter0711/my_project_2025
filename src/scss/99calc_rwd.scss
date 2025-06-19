@@ -65,8 +65,6 @@ $transition: (
 );
 
 @media screen and (max-width: 768px) {
-    $history-w-close: 60px;
-    $history-w-open: 200px;
     $table-height: 300px;
 
     .main {
@@ -86,11 +84,14 @@ $transition: (
                     width: 80%;
 
                     .inputs {
+                        flex: 1;
                         flex-direction: column;
+                        align-items: flex-start;
                         gap: map-get($space, md);
 
                         > div {
-                            flex: 1;
+                            gap: map-get($space, md);
+                            width: 100%;
                         }
                     }
 
@@ -106,9 +107,27 @@ $transition: (
                     width: 80%;
 
                     label.history-open {
+                        gap: map-get($space, md);
                         width: 100%;
-                        height: $history-w-close;
-                        font-size: 1.4rem;
+                        border-radius: map-get($radius, md);
+                        font-size: 1.2rem;
+
+                        .history-text {
+                            display: inline-block;
+                            line-height: 19px;
+                        }
+                    }
+
+                    input:checked ~ .el-history {
+                        width: 100%;
+                    }
+
+                    .el-history {
+                        width: 100%;
+
+                        &-list {
+                            width: 100%;
+                        }
                     }
                 }
             }
@@ -130,9 +149,7 @@ $transition: (
     }
 }
 
-@media screen and (max-width: 468px) {
-    $history-w-close: 50px;
-    $history-w-open: 200px;
+@media screen and (max-width: 500px) {
     $table-height: 280px;
 
     .main {
@@ -160,9 +177,20 @@ $transition: (
 
                 &-history {
                     label.history-open {
-                        width: $history-w-close;
-                        height: $history-w-close;
+                        width: 100%;
                         font-size: 1.2rem;
+                    }
+
+                    input:checked ~ .el-history {
+                        width: 100%;
+                    }
+
+                    .el-history {
+                        width: 100%;
+
+                        &-list {
+                            width: 100%;
+                        }
                     }
                 }
             }

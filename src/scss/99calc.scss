@@ -139,9 +139,9 @@ body {
                     gap: map-get($space, md);
 
                     & > div {
-                        // display: flex;
-                        // align-items: center;
-                        // gap: map-get($space, sm);
+                        display: flex;
+                        align-items: center;
+                        gap: map-get($space, sm);
                         transition: map-get($transition, normal);
 
                         &:hover {
@@ -157,13 +157,14 @@ body {
                         }
 
                         label {
-                            margin-right: map-get($space, lg);
+                            // margin-right: map-get($space, sm);
                             font-size: map-get($font-size, md);
                             cursor: pointer;
                             transition: map-get($transition, fast);
                         }
 
                         input {
+                            flex: 1;
                             padding: 5px 12px;
                             outline: 0;
                             border: 0;
@@ -183,7 +184,7 @@ body {
                 }
 
                 #calc-btn {
-                    margin-left: map-get($space, lg);
+                    margin-left: map-get($space, md);
                     padding: 5px 16px;
                     outline: 0;
                     border: 0;
@@ -230,6 +231,10 @@ body {
                         background-color: $accent-color;
                         color: $bg-primary;
                         transform: translateY(-3px);
+                    }
+
+                    .history-text {
+                        display: none;
                     }
                 }
 
