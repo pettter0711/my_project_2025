@@ -1,3 +1,4 @@
+@charset "UTF-8";
 *,
 *::before,
 *::after {
@@ -29,6 +30,10 @@ ol {
   position: relative;
 }
 
+/** 待處理:
+* table高度用max-height來處理。
+* input那排的高度固定，再用100vh去減掉他，得到table高度
+**/
 html,
 body {
   background-color: #272822;
@@ -345,6 +350,10 @@ ol {
   position: relative;
 }
 
+/** 待處理:
+* table高度用max-height來處理。
+* input那排的高度固定，再用100vh去減掉他，得到table高度
+**/
 @media screen and (max-width: 768px) {
   .main .title {
     margin-bottom: calc(8px * 3);
