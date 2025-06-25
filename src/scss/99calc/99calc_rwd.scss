@@ -1,71 +1,10 @@
-// color
-$bg-primary: #272822;
-$bg-secondary: #3e3d32;
-$text-primary: #f8f8f2;
-$text-secondary: #75715e;
-$accent-color: #5dc4ea;
-$border-color: #49483e;
-
-$font: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-$font-size: (
-    "base": 16px,
-    "note": 0.85rem,
-    "md": 1rem,
-    "subtitle": 1.5rem,
-    "title": 2rem,
-);
-
-$font-weight: (
-    "ex-light": 300,
-    "light": 400,
-    "std": 500,
-    "semi-bold": 600,
-    "bold": 700,
-);
-
-$space-unit: 8px;
-$space: (
-    "xs": calc(#{$space-unit} * 0.5),
-    "sm": calc(#{$space-unit} * 1),
-    "md": calc(#{$space-unit} * 2),
-    "lg": calc(#{$space-unit} * 3),
-    "xl": calc(#{$space-unit} * 4),
-);
-
-$radius: (
-    "sm": 4px,
-    "md": 8px,
-    "lg": 16px,
-    "pill": 9999px,
-    "circle": 50%,
-);
-
-$shadow: (
-    "sm": 0 1px 3px 0
-        rgba(
-            $color: $text-primary,
-            $alpha: 0.12,
-        ),
-    "md": 0 4px 6px
-        rgba(
-            $color: $text-primary,
-            $alpha: 0.1,
-        ),
-    "lg": 0 10px 15px
-        rgba(
-            $color: $text-primary,
-            $alpha: 0.1,
-        ),
-);
-
-$transition: (
-    "fast": 0.15s ease-in-out,
-    "normal": 0.3s ease-in-out,
-    "slow": 0.5s ease-in-out,
-);
+@import "../reset";
+@import "99calc_variable";
 
 @media screen and (max-width: 768px) {
     $table-height: 300px;
+    // rwd本身就是獨立操作的樣式，所以特定的變數直接在該樣式設定就好
+    // 另外，@media算是css的原生語法，scss可能不會處理他而過濾掉
 
     .main {
         .title {
@@ -151,7 +90,6 @@ $transition: (
 
 @media screen and (max-width: 500px) {
     $table-height: 280px;
-
     .main {
         .num-input {
             &-wrap {

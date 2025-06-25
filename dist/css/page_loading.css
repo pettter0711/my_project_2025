@@ -1,2 +1,100 @@
-html,body{font-family:Arial,Helvetica,sans-serif;font-size:16px}.main{width:100%;height:100vh;background-color:#272822}.main-position{width:100%;height:100%;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-flow:column nowrap;flex-flow:column nowrap;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;gap:calc(8px * 4)}.main .load-page{width:100%;text-align:center}.main .load-page .load-title{font-size:2rem;font-weight:600;color:#f8f8f2;margin-bottom:calc(8px * 4)}.main .load-page .load-progress{margin:0 auto;margin-bottom:calc(8px * 2);width:80%}.main .load-page .load-progress-num{margin-bottom:calc(8px * 1);font-size:1.5rem;font-weight:500;color:#f8f8f2}.main .load-page .load-progress-bar{--border: 5px;--h: 30px;position:relative;width:100%;height:var(--h);border:var(--border) solid #5dc4ea;border-radius:9999px;background-color:#f8f8f2;overflow:hidden}.main .load-page .load-progress-bar::after{--h-r: 1;position:absolute;content:"";top:var(--border);left:var(--border);width:calc(var(--progress-w) - (var(--border) * 2));height:calc(100% - (var(--border) * 2));border-radius:9999px;background-color:var(--progress-color)}.main .load-page .btn-area{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;width:100%;gap:calc(8px * 1)}.main .load-page .btn-area button.load-btn{padding:5px 12px;outline:0;border:0;border-radius:4px;background-color:#5dc4ea;color:#f8f8f2;font-size:1rem;font-weight:500;cursor:pointer;-webkit-transform:scale(1);transform:scale(1);-webkit-transition:0.3s ease-in-out;transition:0.3s ease-in-out}.main .load-page .btn-area button.load-btn:hover{-webkit-transform:scale(1.2);transform:scale(1.2);-webkit-box-shadow:0 4px 6px rgba(0,0,0,0.1);box-shadow:0 4px 6px rgba(0,0,0,0.1)}.main .load-page .btn-area button.load-btn.loading{background-color:#2196f3}.main .load-page .btn-area button.load-btn.paused{background-color:#ff9800}.main .load-page .btn-area button.load-btn.completed{background-color:#4caf50}.main .hint-page .keyboard-hints{margin:0 auto;color:#75715e}
-/*# sourceMappingURL=page_loading.css.map */
+html,
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 16px;
+}
+
+.main {
+  width: 100%;
+  height: 100vh;
+  background-color: #272822;
+}
+.main-position {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  justify-content: center;
+  gap: calc(8px * 4);
+}
+.main .load-page {
+  width: 100%;
+  text-align: center;
+}
+.main .load-page .load-title {
+  font-size: 2rem;
+  font-weight: 600;
+  color: #f8f8f2;
+  margin-bottom: calc(8px * 4);
+}
+.main .load-page .load-progress {
+  margin: 0 auto;
+  margin-bottom: calc(8px * 2);
+  width: 80%;
+}
+.main .load-page .load-progress-num {
+  margin-bottom: calc(8px * 1);
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: #f8f8f2;
+}
+.main .load-page .load-progress-bar {
+  --border: 5px;
+  --h: 30px;
+  position: relative;
+  width: 100%;
+  height: var(--h);
+  border: var(--border) solid #5dc4ea;
+  border-radius: 9999px;
+  background-color: #f8f8f2;
+  overflow: hidden;
+}
+.main .load-page .load-progress-bar::after {
+  --h-r: 1;
+  position: absolute;
+  content: "";
+  top: var(--border);
+  left: var(--border);
+  width: calc(var(--progress-w) - var(--border) * 2);
+  height: calc(100% - var(--border) * 2);
+  border-radius: 9999px;
+  background-color: var(--progress-color);
+}
+.main .load-page .btn-area {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  gap: calc(8px * 1);
+}
+.main .load-page .btn-area button.load-btn {
+  padding: 5px 12px;
+  outline: 0;
+  border: 0;
+  border-radius: 4px;
+  background-color: #5dc4ea;
+  color: #f8f8f2;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transform: scale(1);
+  transition: 0.3s ease-in-out;
+}
+.main .load-page .btn-area button.load-btn:hover {
+  transform: scale(1.2);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+.main .load-page .btn-area button.load-btn.loading {
+  background-color: #2196f3;
+}
+.main .load-page .btn-area button.load-btn.paused {
+  background-color: #ff9800;
+}
+.main .load-page .btn-area button.load-btn.completed {
+  background-color: #4caf50;
+}
+.main .hint-page .keyboard-hints {
+  margin: 0 auto;
+  color: #75715e;
+}/*# sourceMappingURL=page_loading.css.map */

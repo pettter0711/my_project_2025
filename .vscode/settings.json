@@ -4,7 +4,7 @@
     "prettier.tabWidth": 4,
     "liveSassCompile.settings.formats": [
         {
-            "format": "compressed",
+            "format": "expanded",
             "extensionName": ".css",
             "savePath": "/dist/css"
         }

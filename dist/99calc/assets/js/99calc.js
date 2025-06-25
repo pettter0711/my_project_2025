@@ -169,11 +169,11 @@ const options = {
         },
     },
     mounted() {
-        // Swal.fire({
-        //     title: "歡迎",
-        //     html: "歡迎使用乘法表產生器!",
-        //     timer: 5000,
-        // });
+        Swal.fire({
+            title: "歡迎",
+            html: "歡迎使用乘法表產生器!",
+            timer: 5000,
+        });
         this.cleanTable();
         this.historyNums = this.getHistory();
     },
